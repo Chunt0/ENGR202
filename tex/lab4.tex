@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}
+\usepackage[margin=.9in]{geometry}
+\usepackage{xcolor}
+\title{AC Thevenin Equivalent Circuits}
+\author{Christopher Hunt}
+\date{}
+\usepackage{graphicx} 
+\usepackage{fancyhdr}
+
+\begin{document}
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{MTH 255}
+\lfoot{Christopher Hunt}
+\lhead{AC Thevenin Equivalent Circuits}
+\rhead{\thepage}
+\maketitle
+
+\section*{Abstract}
+During this lab we are investigating AC Thevenin Equivalency through a simple RLC circuit. We will first perform a theortetical analysis of a circuit, then we will recreate it in the lab and test our predicted Thevenin Voltage and Impedance. Then we will recreate the Thevenin circuit and calculate the power across the load with a variable resistor and the inverse reactive component.
+\section*{Equipment}
+\begin{itemize}
+  \item Oscilloscope
+  \item Function Generator
+  \item LCR Meter
+  \item Resistance Substitution Box
+\end{itemize}
+\section*{Ideal Circuit Diagram}
+\begin{center}
+    \includegraphics[scale=0.5]{fig2.png}
+\end{center}
+\section*{Theoretical Analysis}
+\begin{center}
+    \includegraphics[scale=0.8]{calc1.png}
+\end{center}
+
+\section*{Experimental Analysis}
+
+\subsection*{Component Values:}
+$$R_1 = 985.6 \Omega \quad R_2 = 981.2 \Omega \quad C_1 = 47.68 nF \quad C_2 = 58.02 nf \quad L_1 = 10.439 mH$$
+$$R_3 = 2958 \Omega \quad L_2 = 10.45 mH$$
+
+\subsection*{AC Source:}
+$$V_s = 8cos(2\pi*f*t)\;v \quad f = 3184 Hz$$
+
+\subsection*{1}
+Construct the circuit shown in Figure 1 and Measure the voltage across the load. Then using that voltage, calculate the current. We will use these measurements to verify the operation of the Thevenin Equivalent to be constructed.
+
+With the load connected to $V_s$, $CH_1$ connected to $V_a$ and $Ch_2$ connected to node c. A value of 3.00 v at a phase of 51 degrees was measured.
+$$V_L = 3 \angle 51^o\;v$$
+
+Find $I_L$ using $V_L$ and $Z_L$:
+$$I_L = \frac{V_L}{Z_L} \rightarrow I_L = \frac{3\angle51^o}{2958 + j209.019\Omega} \rightarrow I_L = 0.691 +j0.739\;mA = 1.01\angle46.9^o\;mA$$
+
+
+\subsection*{2}
+Disconnect the load and measure the open circuit voltage and the short circuit current. Use this to determine the Thevenin and Norton equivalent circuits.
+
+Place $Ch_2$ to node b to measure open circuit voltage, $V_{oc}$:
+
+$$V_{oc} = 3.74 \angle34.6^o$$
+
+Then short node c to node d and place $Ch_2$ to node b to find $I_{sc}$.
+
+$$V_b = 2.69\angle1.2^o$$
+$$I_{sc} = \frac{V_b}{Z_{c2}} \rightarrow I_{sc} = \frac{2.69\angle 1.2}{-j862.45}=3.11\angle91.2\;mA$$
+$$V_{Th} = V_{oc} \quad I_N=I_{sc} \quad Z_{th} = \frac{V_{Th}}{I_N} = \frac{3.74\angle34.6\;v}{3.11\angle{91.2}\;mA} = 1202.57 \angle-56.6\;\Omega = 661.99 - j1003.96 \Omega$$
+\\
+\\
+\\
+\subsection*{3}
+Construct the Thevenin equivalent circuit.
+\begin{center}
+    \includegraphics[scale=0.5]{fig3.png}
+\end{center}
+
+
+\subsection*{4}
+Reattach the load as in the initial circuit, measure the voltage across the load, and then calculate the current.
+
+$Ch_2$ at node a:
+$$V_a =2.94 \angle 16.8^o \;v \quad Z_L = 2958 + j209.02 \; \Omega$$
+$$I_L = \frac{V_a}{Z_L} = \frac{2.94 \angle 16.8}{2965.38 \angle 4.04} \rightarrow I_L = .99 \angle 12.76\; mA$$
+\subsection*{5}
+Remove the load and connect the variable resistor and compensating reactance as determined from above. Vary the load resistance and calculate the voltage across the total load and just across the variable resistor.
+
+\subsection*{6}
+Calculate the current using the voltage across the variable resistor. From this calculate power.
+
+\section*{Data}
+\begin{center}
+    Voltages Across Load and Variable Resistor; Calculated Current and Average Power
+    \includegraphics[scale=0.7]{lab3data.png}
+\end{center}
+\begin{center}
+    \includegraphics[scale=0.5]{lab3graph.png}
+\end{center}
+\section*{Conclusion}
+When comparing the values of the Thevenin equivalent circuit calculated theoretically to the experimentally measured values we measured a near match. When recreating the calculated Thevenin equivalent with the same load the voltage and current across the load closely matched the theoretical work. During the second part f the lab, when calculating the power across a load with the appropriate compensating reactance to the Thevenin impedance, there was some curious anomalies. When the resistance was set between 100-300 ohms there was a higher than expected average power that was calculated. From the theoretical model for AC circuit max power, when the load's impedance has equal compensating reactance to the power source circuit, the power absorbed by the load reaches its max power when the load resistance matches the Thevenin resistance. In the calculations taken during this lab this pattern is not corroborated. The max power transferred is when the variable resistor was at 200 ohms, so a total load impedance of 365.4 + j1062.76 $\Omega$. There is a peak at the 500 ohms load resistance, though, when we would expect to see max power transfer. Power then tapers lower and lower as the resistance increases, as expected. Although some of the data corroborated the validity of the max power transfer model, more testing would need to be done to fully verify and rule out errors made while collecting data from the test circuit.
+
+\end{document}

@@ -1,0 +1,117 @@
+\documentclass[11pt]{article}
+\usepackage[margin=.9in]{geometry}
+\usepackage{xcolor}
+\title{Frequency Response of R-L and R-C Networks}
+\author{Christopher Hunt}
+\date{}
+\usepackage{graphicx} 
+\usepackage{fancyhdr}
+
+\begin{document}
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{ENGR 202}
+\lfoot{Christopher Hunt}
+\lhead{Frequency Response of R-L and R-C Networks}
+\rhead{\thepage}
+\maketitle
+
+\section*{Abstract}
+The purpose of this lab is to investigate how series R-L and R-C circuits respond with respect to frequency. Since we know that the impedance of capacitors and inductors are $j\omega L$ and $\frac{1}{j\omega C}$ respectively, we assume that circuits with these passive elements should contribute to a change of currents and voltages at different points in the circuit. We will build two and simulate four simple circuits containing these elements and measure the voltage out at a point in the circuit, plot the data and examine for patterns in the relationship between frequency and voltage.
+\section*{Equipment}
+\begin{itemize}
+    \item Function Generator - GWInstek GFG-8250A   Serial: GCR906609
+    \item Oscilloscope - Keysight DSOX1102G     Serial: CN57336404
+    \item LCR Meter - Keysight U1732C       Serial: MY57300007
+    \item DMM - Extech EX330
+    \item Resistor   $R_1=984.1\;\Omega$
+    \item Capacitor     $C_1=47.69\;nF$
+    \item Inductor      $L_1=45.65\;mH$
+\end{itemize}
+\subsection*{Set-Up}
+\begin{figure}[h]
+\centering
+\begin{minipage}{0.4\textwidth}
+  \centering
+  \includegraphics[scale=0.2]{inductor.png}
+  \caption{RL Circuit}
+\end{minipage}
+\hfill
+\begin{minipage}{0.4\textwidth}
+  \centering
+  \includegraphics[scale=0.2]{capacitor.png}
+  \caption{RC Circuit}
+\end{minipage}
+\end{figure}
+
+\subsection*{Part 1: The R-L Network}
+\begin{center}
+    \includegraphics[scale=0.4]{fig1.png}
+
+    \subsubsection*{Derivation of Transfer Function for R-L and L-R Circuits}
+    \includegraphics[scale=0.6]{rl.png}
+\end{center}
+
+\newpage
+
+\subsection*{Constructed R-L Circuit: Data}
+\begin{center}
+    \includegraphics[scale=0.45]{datatable1.png}
+    \includegraphics[scale=0.45]{rl_volt.png}
+    \includegraphics[scale=0.45]{rl_phase.png}
+\end{center}
+
+\subsection*{Simulated R-L Circuit: Data}
+\begin{center}
+    \includegraphics[scale=0.45]{rl_sim_data.png}
+    \includegraphics[scale=0.45]{rl_sim_volt.png}
+    \includegraphics[scale=0.45]{rl_sim_phase.png}
+\end{center}
+
+\newpage
+
+\subsection*{Simulated L-R Circuit: Data}
+\begin{center}
+    \includegraphics[scale=0.45]{lr_sim_data.png}
+    \includegraphics[scale=0.45]{lr_sim_volt.png}
+    \includegraphics[scale=0.45]{lr_sim_phase.png}
+\end{center}
+
+\newpage
+
+\subsection*{Part 2: The R-C Network}
+\begin{center}
+    \includegraphics[scale=0.4]{fig2.png}
+    \subsubsection*{Derivation of Transfer Function for R-C and C-R Circuits}
+    \includegraphics[scale=0.6]{rc.png}
+\end{center}
+
+\subsection*{Constructed R-C Circuit: Data}
+\begin{center}
+    \includegraphics[scale=0.45]{datatable2.png}
+    \includegraphics[scale=0.45]{rc_volt.png}
+    \includegraphics[scale=0.45]{rc_phase.png}
+\end{center}
+
+\newpage
+
+\subsection*{Simulated R-C Circuit: Data}
+\begin{center}
+    \includegraphics[scale=0.45]{rc_sim_data.png}
+    \includegraphics[scale=0.45]{rc_sim_volt.png}
+    \includegraphics[scale=0.45]{rc_sim_phase.png}
+\end{center}
+
+\newpage
+
+\subsection*{Simulated C-R Circuit: Data}
+\begin{center}
+    \includegraphics[scale=0.45]{cr_sim_data.png}
+    \includegraphics[scale=0.45]{cr_sim_volt.png}
+    \includegraphics[scale=0.45]{cr_sim_phase.png}
+\end{center}
+
+\section*{Conclusion}
+The aim of this lab was to construct two circuits, an RL and an RC circuit, and measure the output voltage between the two components as the frequency of the AC source is adjusted from 1 KHz to 100 KHz. Then compare this to the simulated data. When comparing the real world measurements to the simulated measurements they produce very similar response curves. For the RL circuit the voltage out with respect to frequency goes from near 25\% the voltage source to nearly 100\% the voltage source. This is because as the fequency increases the impedance across the inductor grows linearly with respect to the frequency. The phase goes from near 90 degrees out of phase to near 0 degrees out of phase. For the RC circuit the voltage out with respect to the frequency goes from close to 100\% the source voltage to nearly 0\% the source voltage. This is because as the frequency increases the impedance across the capacitor is inversely proportional to the frequency. The phase goes from near 0 degrees out of phase to near -90 degrees out of phase. When simulating the LR circuit, the voltage vs frequency curve is inverted but the phase vs frequency curve is the same. The same pattern can be found with the CR circuit.
+
+\end{document}
